@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State var apiKey: String = UserDefaults.standard.string(forKey: "openai_api_key") ?? ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List{
+            Section("OpenAI API Key"){
+                TextField("Enter key", text: $apiKey){
+                    UserDefaults.standard.set(apiKey, forKey: "openai_api_key")
+                }
+            }
+        }
     }
 }
 
